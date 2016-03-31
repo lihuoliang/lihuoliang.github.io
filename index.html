@@ -1,1 +1,78 @@
-hello world
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>前端作品列表</title>
+    <link rel="stylesheet" type="text/css" href="style/main.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="style/reset.css" media="all"/>
+</head>
+<body>
+<!--http://1.gitapp.sinaapp.com/base/-->
+<div class="wrap shadow">
+    <ol id="ol" class="list">
+
+    </ol>
+</div>
+<div class="auto welcome">
+    <p>作品正在陆续增加中。。。</p>
+</div>
+<script type="text/javascript">
+    var str = '',
+        data = [
+		     [
+			     { title :'第一章 企业/电商网站'},
+			      {url:'companyWebsite/index.html',title:'企业网站'},
+				  {url:'QQdown/index.html',title:'腾讯软件下载中心'},
+				  {url:'e-commerceWebsite/index.html',title:'电商网站'},
+		    ],
+            [
+                { title : '第二章 原生JS常用代码'},
+                {url:'JsDemo/点击图片切换.html',title:'点击图片切换'},
+				{url:'JsDemo/改变网页字体大小背景颜色.html',title:'改变网页字体大小背景颜色'},
+				{url:'JsDemo/模拟发短信效果.html',title:'模拟发短信效果'},
+				{url:'JsDemo/图片轮播.html',title:'图片轮播'},
+				{url:'JsDemo/下拉菜单.html',title:'下拉菜单'},
+				{url:'JsDemo/验证码.html',title:'验证码'},
+            ]                                  
+        ];
+    for(var i = 0; i < data.length; i++){
+        var items = data[i];
+        var sub = '';
+        for(var j=0; j<items.length; j++){
+            var son = items[j];
+            if(j == 0){
+                sub += '<li><h1><a href="javascript:;" title="' + son.title + '">' + son.title + '</a></h1><dl class="sub-dl">';
+            } else {
+                sub += '<dd><a href="' + son.url + '" target="_blank" title="' + son.title + '">' + son.title + '</a></dd>';
+            }
+            if(j == items.length - 1){
+                sub += '</dl></li>';
+            }
+        }
+        str += sub;
+    }
+    var ol = document.getElementById('ol');
+    ol.innerHTML = str;
+    var h1 = ol.getElementsByTagName('h1');
+    var dl = ol.getElementsByTagName('dl');
+    var tmp = -1;
+    var open = false;
+    for(var i=0; i < h1.length; i++){
+        h1[i].index = i;
+        h1[i].onclick = function(){
+            for(var i=0; i<h1.length; i++){
+                dl[i].style.display = 'none';
+            }
+            if(tmp == this.index && open){
+                dl[this.index].style.display = 'none';
+                open = false;
+            } else {
+                dl[this.index].style.display = 'block';
+                open = true;
+            }
+            tmp = this.index;
+        }
+    }
+
+</script>
+</body>
+</html>

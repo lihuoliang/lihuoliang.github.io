@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>模拟发送信息</title>
+<style>
+div{width:240px;height:200px;border:1px solid black;padding:10px;background:#f1f1f1;}
+</style>
+<script>
+window.onload=function (){
+	var oText=document.getElementById('text1');
+	var oBtn=document.getElementById('btn1');
+	var oDiv=document.getElementById('div1');
+	var oSpan=document.getElementById('span1');
+	oBtn.onclick=function (){
+		if(oText.value==''){
+			alert('请输入点内容把')
+			}else{
+		oDiv.innerHTML=oDiv.innerHTML+oSpan.innerHTML+oText.value+'<br />';
+		oText.value ='';
+		}
+		};
+	}
+</script>
+</head>
+
+<body>
+<div id="div1"></div>
+<span id="span1">妙味：</span>
+<input id="text1" type="text" />
+<input id="btn1" type="button" value="按钮"/>
+</body>
+</html>
